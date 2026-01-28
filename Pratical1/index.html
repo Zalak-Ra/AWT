@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Emitter Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Event Emitter Dashboard</h1>
+            <p>User Activity Tracking System</p>
+        </header>
+        
+        <main>
+            <div class="user-info">
+                <input type="text" id="username" placeholder="Enter username" value="Vanshal Nagar">
+            </div>
+            
+            <div class="controls">
+                <button id="loginBtn" class="btn login-btn">Login</button>
+                <button id="logoutBtn" class="btn logout-btn">Logout</button>
+                <select id="productSelect">
+                    <option value="Laptop">Laptop</option>
+                    <option value="Phone">Phone</option>
+                    <option value="Tablet">Tablet</option>
+                </select>
+                <button id="purchaseBtn" class="btn purchase-btn">Purchase</button>
+                <input type="email" id="emailInput" placeholder="Enter new email">
+                <button id="updateBtn" class="btn update-btn">Update Email</button>
+                <button id="summaryBtn" class="btn summary-btn">Show Summary</button>
+            </div>
+            
+            <div class="stats-grid">
+                <div class="stat-card login">
+                    <h3>Logins</h3>
+                    <span class="count" id="loginCount">0</span>
+                </div>
+                <div class="stat-card logout">
+                    <h3>Logouts</h3>
+                    <span class="count" id="logoutCount">0</span>
+                </div>
+                <div class="stat-card purchase">
+                    <h3>Purchases</h3>
+                    <span class="count" id="purchaseCount">0</span>
+                </div>
+                <div class="stat-card update">
+                    <h3>Updates</h3>
+                    <span class="count" id="updateCount">0</span>
+                </div>
+            </div>
+            
+            <div class="activity-log">
+                <h3>Activity Log</h3>
+                <ul id="logList"></ul>
+            </div>
+        </main>
+        <script src="Pratical1.js"></script>
+    </div>
+</body>
+</html>     
