@@ -1,4 +1,3 @@
-
 const http = require('http');
 const fs = require('fs');
 const path = require('path');
@@ -105,49 +104,3 @@ const server = http.createServer((req, res) => {
 server.listen(3001, () => {
     console.log('Server running at http://localhost:3001');
 });
-=======
-const express = require("express")
-const app = express()
-let TODO = []
-let com_todo = []
-
-app.use(express.json())
-
-app.post("/add_todo",(req,res)=>{
-    const body = req.body
-    TODO.push(body)
-    console.log(TODO)
-    res.json({"sucess":"todo added"})
-})   
-
-app.delete("/delete_todo",(req,res)=>{
-    const body = req.body
-    TODO = TODO.filter(todo => todo.id != body.id)
-    res.json({"done":"todo del"})
-})
-
-app.delete("/comp_todo",(req,res) =>{
-    const body = req.body
-    com_todo = com_todo.filter(com_todo => com_todo.id != body.id)
-    TODO = TODO.filter(todo => todo.id != body.id)
-    res.json({"done":"todo completed"})
-})
-
-app.put("/update_todo",(req,res) => {
-    const body = req.body
-    TODO = TODO.filter(todo => todo.id != body.id)
-    TODO.push(body)
-    console.log(TODO)
-    res.json({"sucess":"todo updated"})
-})
-
-app.get("/listofcomp_todo",(req,res) => {
-    const body = req.body
-    console.log(com_todo)
-    res.json({"sucess":"todo updated"})
-})
-
-app.listen(3000,()=>{
-    console.log("runing on 3000")
-})
->>>>>>> 6c6c25b (Initial commit)
