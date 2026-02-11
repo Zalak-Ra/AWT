@@ -8,9 +8,6 @@ dotenv.config();
 
 const PORT = process.env.PORT || 3000;
 
-/**
- * Start the server
- */
 async function startServer() {
   try {
     // Test database connection
@@ -27,7 +24,7 @@ async function startServer() {
       logger.info(`API endpoints available at http://localhost:${PORT}/v1/payments`);
     });
 
-    // Graceful shutdown
+    // shutdown
     process.on('SIGTERM', async () => {
       logger.info('SIGTERM signal received: closing HTTP server');
       await prisma.$disconnect();
