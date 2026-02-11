@@ -30,7 +30,7 @@ export function createApp(): Application {
     });
   });
 
-  // API version 1 routes
+  // API version 
   app.use('/v1/payments', createPaymentRoutes());
 
   // 404 handler
