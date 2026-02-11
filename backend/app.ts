@@ -3,9 +3,6 @@ import { createPaymentRoutes } from './routes/payment.routes';
 import { errorHandler, notFoundHandler } from './middleware/error.middleware';
 import logger from './config/logger';
 
-/**
- * Create and configure Express application
- */
 export function createApp(): Application {
   const app = express();
 
