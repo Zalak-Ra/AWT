@@ -52,4 +52,32 @@ export class PaymentRepository {
             where: { idempotency_key: key },
         });
     }
+<<<<<<< HEAD
 }
+=======
+<<<<<<< HEAD
+
+    // 5. Log a Transaction Attempt (Bank Response)
+    async addTransaction(paymentId: string, status: 'SUCCESS' | 'FAILURE', rawResponse: unknown) {
+        return await prisma.transaction.create({
+            data: {
+                payment_intent_id: paymentId,
+                status,
+                raw_response: rawResponse as any,
+                provider_ref_id: `tx_${randomUUID()}` // Mock Bank Transaction ID
+            }
+        });
+    }
+
+    // 6. Fetch all PaymentIntents with their Transaction history
+    async findAllWithTransactions() {
+        return await prisma.paymentIntent.findMany({
+            orderBy: { created_at: 'desc' },
+            include: { transactions: true },
+        });
+    }
+}
+=======
+}
+>>>>>>> 8618efe (backend)
+>>>>>>> 7b18c20 (add front)
