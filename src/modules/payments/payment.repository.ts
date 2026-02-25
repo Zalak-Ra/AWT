@@ -1,13 +1,22 @@
 // src/modules/payments/payment.repository.ts
-import { prisma } from '../../config/database'; // Your DB connection
+import { PrismaClient } from '@prisma/client';
 import { CreatePaymentDTO, UpdatePaymentStatusDTO, PaymentIntent } from './interfaces/payment.interface';
 import { randomUUID } from 'crypto';
+
+// Lazy singleton — only connects when first DB call is made
+let _prisma: PrismaClient | null = null;
+function getPrisma(): PrismaClient {
+    if (!_prisma) {
+        _prisma = new PrismaClient();
+    }
+    return _prisma;
+}
 
 export class PaymentRepository {
 
     // 1. Create a new Payment Intent
     async create(data: CreatePaymentDTO): Promise<PaymentIntent> {
-        return await prisma.paymentIntent.create({
+        return await getPrisma().paymentIntent.create({
             data: {
                 amount: data.amount,
                 currency: data.currency,
@@ -21,14 +30,14 @@ export class PaymentRepository {
 
     // 2. Find a Payment by ID
     async findById(id: string): Promise<PaymentIntent | null> {
-        return await prisma.paymentIntent.findUnique({
+        return await getPrisma().paymentIntent.findUnique({
             where: { id },
         });
     }
 
     // 3. Update Status (e.g., when Bank confirms payment)
     async updateStatus(data: UpdatePaymentStatusDTO): Promise<PaymentIntent> {
-        return await prisma.paymentIntent.update({
+        return await getPrisma().paymentIntent.update({
             where: { id: data.id },
             data: {
                 status: data.status,
@@ -39,7 +48,7 @@ export class PaymentRepository {
 
     // 4. Check for Idempotency (Prevent double charging)
     async findByIdempotencyKey(key: string): Promise<PaymentIntent | null> {
-        return await prisma.paymentIntent.findUnique({
+        return await getPrisma().paymentIntent.findUnique({
             where: { idempotency_key: key },
         });
     }

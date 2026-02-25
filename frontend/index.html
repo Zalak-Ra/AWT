@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Secure payment gateway — create and manage payment intents." />
+  <title>Payment Gateway</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💳</text></svg>" />
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="header fade-in">
+    <h1>💳 Payment Gateway</h1>
+    <p>Create secure payment intents in seconds</p>
+    <div class="health-badge" id="healthBadge">
+      <span class="health-dot"></span>
+      <span id="healthText">Checking…</span>
+    </div>
+  </header>
+
+  <!-- Payment Form Card -->
+  <main class="card fade-in">
+    <h2><span class="icon">🔒</span> New Payment</h2>
+
+    <form id="paymentForm" autocomplete="off">
+      <div class="form-row">
+        <div class="form-group">
+          <label for="amount">Amount (in cents)</label>
+          <input type="number" id="amount" placeholder="e.g. 5000" min="1" required />
+        </div>
+        <div class="form-group">
+          <label for="currency">Currency</label>
+          <select id="currency" required>
+            <option value="USD">USD — US Dollar</option>
+            <option value="EUR">EUR — Euro</option>
+            <option value="GBP">GBP — British Pound</option>
+            <option value="INR">INR — Indian Rupee</option>
+            <option value="JPY">JPY — Japanese Yen</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="description">Description <span style="color:var(--text-muted)">(optional)</span></label>
+        <textarea id="description" placeholder="Order #1234, subscription renewal…" rows="2"></textarea>
+      </div>
+
+      <button type="submit" class="btn" id="submitBtn">Create Payment Intent</button>
+    </form>
+
+    <!-- Result area -->
+    <div class="result" id="result"></div>
+  </main>
+
+  <footer class="footer">
+    Payment Gateway &copy; 2026 &middot; All data transmitted securely
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
