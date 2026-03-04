@@ -1,0 +1,94 @@
+:root {
+    --accent: #5c7cfa
+}
+
+* {
+    box-sizing: border-box;
+    font-family: Segoe UI, Arial, Helvetica, sans-serif
+}
+
+body {
+    margin: 0;
+    background: #f3f4f6;
+    color: #111
+}
+
+.app {
+    max-width: 900px;
+    margin: 28px auto;
+    padding: 12px
+}
+
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between
+}
+
+nav button {
+    margin-left: 8px
+}
+
+.card {
+    background: white;
+    padding: 16px;
+    border-radius: 6px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+    margin-top: 12px
+}
+
+.products {
+    display: flex;
+    gap: 12px
+}
+
+.product {
+    border: 1px solid #eee;
+    padding: 12px;
+    border-radius: 6px;
+    width: 140px;
+    text-align: center
+}
+
+.product .price {
+    font-weight: 700;
+    margin: 8px 0
+}
+
+.row {
+    display: flex;
+    gap: 8px;
+    align-items: center
+}
+
+input {
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px
+}
+
+.cart-list {
+    list-style: none;
+    padding: 0;
+    margin: 0
+}
+
+.cart-item {
+    display: grid;
+    grid-template-columns: 1fr 80px 80px 80px;
+    gap: 8px;
+    align-items: center;
+    padding: 8px 0;
+    border-bottom: 1px solid #f0f0f0
+}
+
+.cart-total {
+    font-weight: 700;
+    margin-top: 12px
+}
+
+.user {
+    margin-left: 12px;
+    font-size: 0.9rem;
+    color: #444
+}
